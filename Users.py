@@ -26,18 +26,20 @@ class User():
     def greet_user(self):
         print ("Bienvenido", self.nombre, self.apellido)
 
-class Admin (User):
 
-    def ___init__ (self, first_name,last_name, gender, age, country):
-        super().__init__(first_name, last_name, gender, age, country)
-        self.attributes = ["sudo", "can ban users", "can edit post"] 
+class Privileges ():
+
+    def __init__(self):
+        self.privileges = ["sudo", "can ban users", "can edit post"]
 
     def show_privileges (self):
-        print ("Usted es un administrador")
-        print (self.attributes)
-        
+        print ("Privileges: ", self.privileges)
 
+class Admin (User):
 
+    def __init__(self, first_name, last_name, gender, age, country):
+        super().__init__(first_name, last_name, gender, age, country)
+        self.attributes = Privileges()
 
 usuario2 = User ("Pedro", "Pettinati", "hombre", 3, "Argentina")
 usuario3 = User ("Felipe", "Pettinati", "hombre", 5, "Argentina")
@@ -47,4 +49,5 @@ administrador = Admin ("Mariano", "Pettinati", "hombre", 39, "Argentina")
 
 administrador.greet_user()
 #administrador.describe_user()
-administrador.show_privileges()
+administrador.attributes.show_privileges()
+#print (type(administrador).__name__)
